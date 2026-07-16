@@ -122,7 +122,7 @@ export default function Navbar() {
                                             className={`transition-colors duration-200 ${
                                                 isActive
                                                     ? "text-cyan"
-                                                    : "text-text-secondary hover:text-white"
+                                                    : "text-text-secondary hover:text-text-primary"
                                             }`}>
                                             {link.label}
                                         </span>
@@ -226,7 +226,7 @@ export default function Navbar() {
                 </div>
             </motion.nav>
 
-            {/* ── Mobile Drawer ─────────────────────────── */}
+            {/* ────────── Mobile Drawer ────────── */}
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
