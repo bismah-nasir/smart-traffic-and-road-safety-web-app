@@ -1,111 +1,663 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════
+   SMART TRAFFIC — DESIGN SYSTEM
+   Futuristic Smart City Theme with Glassmorphism
+   ═══════════════════════════════════════════════════════════════ */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --nav-bg: rgba(4, 11, 23, 0.82);
+  --nav-border: rgba(255, 255, 255, 0.07);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+@theme {
+  /* ── Core Palette ────────────────────────────────── */
+  --color-navy-950: #040b17;
+  --color-navy-900: #081426;
+  --color-navy-800: #0c1e38;
+  --color-navy-700: #112a4a;
+  --color-navy-600: #17375e;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  /* ── Accent Colors ──────────────────────────────── */
+  --color-electric: #3b82f6;
+  --color-electric-light: #60a5fa;
+  --color-cyan: #06b6d4;
+  --color-cyan-light: #22d3ee;
+  --color-purple: #8b5cf6;
+  --color-purple-light: #a78bfa;
+
+  /* ── Traffic Colors ─────────────────────────────── */
+  --color-traffic-green: #22c55e;
+  --color-traffic-yellow: #eab308;
+  --color-traffic-red: #ef4444;
+
+  /* ── Semantic ───────────────────────────────────── */
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.15);
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-dark-text-primary: #f1f5f9;
+  --color-dark-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  /* ── Typography ─────────────────────────────────── */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* ── Animations ─────────────────────────────────── */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-move-car: move-car 8s linear infinite;
+  --animate-move-car-reverse: move-car-reverse 10s linear infinite;
+  --animate-road-lines: road-lines 1.5s linear infinite;
+  --animate-traffic-blink: traffic-blink 3s step-end infinite;
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-cloud-scroll: cloud-scroll 30s linear infinite;
+  --animate-particle-float: particle-float 10s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.6s ease-out;
+  --animate-fade-in: fade-in 0.8s ease-out;
+  --animate-ripple: ripple 0.6s ease-out;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-bounce-subtle: bounce-subtle 2s ease-in-out infinite;
 }
 
-body {
-  margin: 0;
+/* ═══════════════════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.6), 0 0 80px rgba(6, 182, 212, 0.2); }
+}
+
+@keyframes move-car {
+  0% { transform: translateX(-120px); }
+  100% { transform: translateX(calc(100vw + 120px)); }
+}
+
+@keyframes move-car-reverse {
+  0% { transform: translateX(calc(100vw + 120px)) scaleX(-1); }
+  100% { transform: translateX(-120px) scaleX(-1); }
+}
+
+@keyframes road-lines {
+  0% { background-position: 0 0; }
+  100% { background-position: -60px 0; }
+}
+
+@keyframes traffic-blink {
+  0%, 33% { --signal-color: var(--color-traffic-green); }
+  33.01%, 66% { --signal-color: var(--color-traffic-yellow); }
+  66.01%, 100% { --signal-color: var(--color-traffic-red); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes cloud-scroll {
+  0% { transform: translateX(-200px); }
+  100% { transform: translateX(110vw); }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  25% { transform: translate(30px, -40px) scale(1.1); opacity: 0.7; }
+  50% { transform: translate(-20px, -80px) scale(0.9); opacity: 0.5; }
+  75% { transform: translate(40px, -30px) scale(1.05); opacity: 0.6; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes route-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes marker-pulse {
+  0%, 100% { r: 6; opacity: 1; }
+  50% { r: 12; opacity: 0.4; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure, blockquote, dl, dd {
   margin: 0;
+  padding: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-navy-950);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLASSMORPHISM UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(10, 25, 47, 0.75);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+/* NOTE: We removed the transform from glass-card:hover to prevent
+   conflict with Framer Motion's whileHover — Framer owns the transform. */
+.glass-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.09) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border-color: rgba(6, 182, 212, 0.2);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.35),
+    0 0 32px rgba(6, 182, 212, 0.08);
+}
+
+/* ── Gradient Borders ────────────────────────────── */
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-purple), var(--color-electric));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ── Neon Glow ───────────────────────────────────── */
+
+.glow-cyan {
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.35), 0 0 50px rgba(6, 182, 212, 0.1);
+}
+
+.glow-electric {
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.35), 0 0 50px rgba(59, 130, 246, 0.1);
+}
+
+.glow-purple {
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.35), 0 0 50px rgba(139, 92, 246, 0.1);
+}
+
+.glow-green {
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.35), 0 0 50px rgba(34, 197, 94, 0.1);
+}
+
+.glow-red {
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.35), 0 0 50px rgba(239, 68, 68, 0.1);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* ── Button Styles ───────────────────────────────── */
+
+.btn-primary {
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-electric));
+  color: white;
+  font-weight: 600;
+  padding: 11px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.45), 0 0 16px rgba(6, 182, 212, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  padding: 11px 28px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(6, 182, 212, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Scrollbar ───────────────────────────────────── */
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-navy-950); }
+::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.25); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(6, 182, 212, 0.45); }
+
+/* ── Layout Helpers ──────────────────────────────── */
+
+/* Section vertical breathing room */
+.section-padding {
+  padding: 80px 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 96px 0;
+  }
+}
+
+/* Centered container with responsive horizontal gutter */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 48px;
+  }
+}
+
+/* Page wrapper – sits below 72px fixed navbar */
+.page-wrapper {
+  padding-top: 72px;
+  min-height: 100vh;
+}
+
+/* ── Section heading helpers ─────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  color: var(--color-cyan);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-divider {
+  display: block;
+  width: 48px;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-electric));
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Traffic Signal Animation ────────────────────── */
+
+.traffic-signal {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px 7px;
+  background: #111827;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.traffic-light {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.traffic-light.red    { background: rgba(239, 68, 68, 0.15); }
+.traffic-light.yellow { background: rgba(234, 179, 8, 0.15); }
+.traffic-light.green  { background: rgba(34, 197, 94, 0.15); }
+
+.traffic-light.red.active {
+  background: var(--color-traffic-red);
+  box-shadow: 0 0 12px var(--color-traffic-red), 0 0 28px rgba(239, 68, 68, 0.3);
+}
+.traffic-light.yellow.active {
+  background: var(--color-traffic-yellow);
+  box-shadow: 0 0 12px var(--color-traffic-yellow), 0 0 28px rgba(234, 179, 8, 0.3);
+}
+.traffic-light.green.active {
+  background: var(--color-traffic-green);
+  box-shadow: 0 0 12px var(--color-traffic-green), 0 0 28px rgba(34, 197, 94, 0.3);
+}
+
+/* ── Animated Background Grid ────────────────────── */
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ── Hero Road ───────────────────────────────────── */
+
+.road-surface {
+  background: linear-gradient(180deg,
+    rgba(10,10,30,0) 0%,
+    #252540 6%,
+    #303048 45%,
+    #303048 55%,
+    #252540 94%,
+    rgba(10,10,30,0) 100%
+  );
+}
+
+.road-line {
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(251, 191, 36, 0.7) 0px,
+    rgba(251, 191, 36, 0.7) 24px,
+    transparent 24px,
+    transparent 48px
+  );
+  animation: road-lines 1.2s linear infinite;
+}
+
+/* ── Route Visualization ─────────────────────────── */
+
+.route-path {
+  stroke-dasharray: 10 5;
+  animation: dash-flow 1s linear infinite;
+}
+
+.route-draw {
+  animation: route-draw 2s ease-in-out forwards;
+}
+
+/* ── Pulse Rings ─────────────────────────────────── */
+
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: ripple 1.5s ease-out infinite;
+}
+
+/* ── Loading screen ──────────────────────────────── */
+
+.loading-road {
+  height: 5px;
+  border-radius: 99px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(6, 182, 212, 0.7) 0px,
+    rgba(6, 182, 212, 0.7) 18px,
+    transparent 18px,
+    transparent 36px
+  );
+  animation: road-lines 0.7s linear infinite;
+}
+
+/* ── Form Input Shared Style ─────────────────────── */
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.form-input:focus {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.05);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.08);
+}
+
+.form-input-icon {
+  position: relative;
+}
+
+.form-input-icon .icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.form-input-icon .form-input {
+  padding-left: 42px;
+}
+
+/* ── Stat badge ──────────────────────────────────── */
+
+.stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES (applied via .light class on body)
+   ═══════════════════════════════════════════════════════════════ */
+
+body.light {
+  background-color: #f0f4f8;
+  color: var(--color-text-primary);
+
+  /* Scrolled header variables for light mode */
+  --nav-bg: rgba(240, 244, 248, 0.85);
+  --nav-border: rgba(15, 23, 42, 0.06);
+
+  /* Semantic palette overrides */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border-hover: rgba(15, 23, 42, 0.15);
+  --color-surface: rgba(15, 23, 42, 0.03);
+  --color-surface-hover: rgba(15, 23, 42, 0.06);
+}
+
+body.light .glass {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+body.light .glass-strong {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light .glass-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.60) 100%);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+body.light .glass-card:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.80) 100%);
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+body.light .form-input {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1e293b;
+}
+
+body.light .form-input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+body.light .form-input:focus {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.04);
 }
