@@ -1,3 +1,13 @@
+import {
+  Heart,
+  HardHat,
+  Smartphone,
+  Gauge,
+  TrafficCone,
+  AlertTriangle,
+  Moon,
+} from 'lucide-react';
+
 // ────────── Navigation Links ──────────
 export const NAV_LINKS = [
     { label: "Home", path: "/" },
@@ -45,5 +55,58 @@ export const TRAFFIC_NEWS = [
     summary: 'Sector 14 main road will be partially closed Saturday–Sunday.',
     time: '8 hours ago',
     category: 'Alert',
+  },
+];
+
+// ────────── Safety Tips ──────────
+export const SAFETY_TIPS = [
+  {
+    id: 'seatbelt',
+    title: 'Wear Seat Belt',
+    description: 'Always buckle up before starting your journey. Seat belts reduce the risk of fatal injury by 45%.',
+    icon: Heart,
+    gradient: 'from-rose-500 to-pink-600',
+  },
+  {
+    id: 'helmet',
+    title: 'Use Helmet',
+    description: 'Helmets reduce the risk of head injury by 69%. Always wear a certified helmet while riding.',
+    icon: HardHat,
+    gradient: 'from-amber-500 to-orange-600',
+  },
+  {
+    id: 'no-phone',
+    title: 'Avoid Mobile Phone',
+    description: 'Using a phone while driving increases accident risk by 4x. Keep your focus on the road.',
+    icon: Smartphone,
+    gradient: 'from-blue-500 to-indigo-600',
+  },
+  {
+    id: 'speed-limit',
+    title: 'Maintain Speed Limit',
+    description: 'Speed is a factor in 30% of all fatal crashes. Observe posted speed limits at all times.',
+    icon: Gauge,
+    gradient: 'from-cyan-500 to-teal-600',
+  },
+  {
+    id: 'traffic-signals',
+    title: 'Follow Traffic Signals',
+    description: 'Running red lights causes 25% of intersection crashes. Always obey traffic signals.',
+    icon: TrafficCone,
+    gradient: 'from-green-500 to-emerald-600',
+  },
+  {
+    id: 'emergency-lane',
+    title: 'Emergency Lane Rules',
+    description: 'Keep emergency lanes clear for first responders. Blocking them can cost lives.',
+    icon: AlertTriangle,
+    gradient: 'from-red-500 to-rose-600',
+  },
+  {
+    id: 'night-driving',
+    title: 'Night Driving Tips',
+    description: 'Use headlights, reduce speed, and stay alert. Fatal crashes are 3x more likely at night.',
+    icon: Moon,
+    gradient: 'from-purple-500 to-violet-600',
   },
 ];
