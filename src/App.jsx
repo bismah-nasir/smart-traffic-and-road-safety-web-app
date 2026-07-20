@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 
 import Home from "@/pages/Home";
+import RoadSafety from '@/pages/RoadSafety';
 
 export default function App() {
     const location = useLocation();
@@ -28,6 +29,7 @@ export default function App() {
                     <AnimatePresence mode="wait">
                         <Routes location={location} key={location.pathname}>
                             <Route path="/" element={<Home />} />
+                            <Route path="/road-safety" element={<RoadSafety />} />
                         </Routes>
                     </AnimatePresence>
 
