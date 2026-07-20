@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 
+import Home from "@/pages/Home";
+
 export default function App() {
+    const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -20,9 +25,11 @@ export default function App() {
                 <>
                     <Navbar />
 
-                    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-                        <h1>Smart Traffic and Road Safety Web App</h1>
-                    </section>
+                    <AnimatePresence mode="wait">
+                        <Routes location={location} key={location.pathname}>
+                            <Route path="/" element={<Home />} />
+                        </Routes>
+                    </AnimatePresence>
 
                     <Footer />
                 </>
