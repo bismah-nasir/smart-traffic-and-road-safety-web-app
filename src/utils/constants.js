@@ -6,6 +6,11 @@ import {
   TrafficCone,
   AlertTriangle,
   Moon,
+  Ambulance,
+  Shield,
+  Flame,
+  Phone,
+  Hospital,
 } from 'lucide-react';
 
 // ────────── Navigation Links ──────────
@@ -107,6 +112,55 @@ export const SAFETY_TIPS = [
     title: 'Night Driving Tips',
     description: 'Use headlights, reduce speed, and stay alert. Fatal crashes are 3x more likely at night.',
     icon: Moon,
+    gradient: 'from-purple-500 to-violet-600',
+  },
+];
+
+// ────────── Emergency Contacts ──────────
+export const EMERGENCY_CONTACTS = [
+  {
+    id: 'ambulance',
+    title: 'Ambulance',
+    number: '102',
+    description: 'Medical emergency response',
+    icon: Ambulance,
+    color: '#ef4444',
+    gradient: 'from-red-500 to-rose-600',
+  },
+  {
+    id: 'police',
+    title: 'Police',
+    number: '100',
+    description: 'Law enforcement & traffic police',
+    icon: Shield,
+    color: '#3b82f6',
+    gradient: 'from-blue-500 to-indigo-600',
+  },
+  {
+    id: 'fire',
+    title: 'Fire Brigade',
+    number: '101',
+    description: 'Fire & rescue services',
+    icon: Flame,
+    color: '#f97316',
+    gradient: 'from-orange-500 to-amber-600',
+  },
+  {
+    id: 'helpline',
+    title: 'Emergency Helpline',
+    number: '112',
+    description: 'Universal emergency number',
+    icon: Phone,
+    color: '#22c55e',
+    gradient: 'from-green-500 to-emerald-600',
+  },
+  {
+    id: 'hospital',
+    title: 'Nearby Hospital',
+    number: '108',
+    description: 'Nearest hospital finder',
+    icon: Hospital,
+    color: '#8b5cf6',
     gradient: 'from-purple-500 to-violet-600',
   },
 ];

@@ -5,13 +5,17 @@ import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import FloatingActionButton from "@/components/FloatingActionButton";
+import EmergencyPopup from "@/components/EmergencyPopup";
 
 import Home from "@/pages/Home";
-import RoadSafety from '@/pages/RoadSafety';
+import RoadSafety from "@/pages/RoadSafety";
+import Emergency from "@/pages/Emergency";
 
 export default function App() {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
+    const [showEmergencyPopup, setShowEmergencyPopup] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoading(false), 2800);
@@ -30,10 +34,18 @@ export default function App() {
                         <Routes location={location} key={location.pathname}>
                             <Route path="/" element={<Home />} />
                             <Route path="/road-safety" element={<RoadSafety />} />
+                            <Route path="/emergency" element={<Emergency />} />
                         </Routes>
                     </AnimatePresence>
 
                     <Footer />
+                    <FloatingActionButton
+                        onEmergencyClick={() => setShowEmergencyPopup(true)}
+                    />
+                    <EmergencyPopup
+                        isOpen={showEmergencyPopup}
+                        onClose={() => setShowEmergencyPopup(false)}
+                    />
                 </>
             )}
         </>
