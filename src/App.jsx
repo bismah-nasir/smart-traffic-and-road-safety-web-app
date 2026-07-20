@@ -8,6 +8,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 
 import Home from "@/pages/Home";
 import RoadSafety from '@/pages/RoadSafety';
+import Emergency from '@/pages/Emergency';
 
 export default function App() {
     const location = useLocation();
@@ -30,6 +31,7 @@ export default function App() {
                         <Routes location={location} key={location.pathname}>
                             <Route path="/" element={<Home />} />
                             <Route path="/road-safety" element={<RoadSafety />} />
+                            <Route path="/emergency" element={<Emergency />} />
                         </Routes>
                     </AnimatePresence>
 
