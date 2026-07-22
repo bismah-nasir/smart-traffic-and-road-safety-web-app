@@ -13,6 +13,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 import Home from "@/pages/Home";
 import LiveTraffic from "@/pages/LiveTraffic";
+import RouteSuggestion from '@/pages/RouteSuggestion';
 import RoadSafety from "@/pages/RoadSafety";
 import Emergency from "@/pages/Emergency";
 
@@ -36,8 +37,7 @@ export default function App() {
             const notifTimer = setTimeout(() => {
                 setNotification({
                     isVisible: true,
-                    message:
-                        "Smart Signal System activated at 50 major intersections.",
+                    message: "Smart Signal System activated at 50 major intersections.",
                     type: "info",
                 });
             }, 4000);
@@ -58,6 +58,7 @@ export default function App() {
                         <Routes location={location} key={location.pathname}>
                             <Route path="/" element={<Home />} />
                             <Route path="/live-traffic" element={<LiveTraffic />} />
+                            <Route path="/route-suggestion" element={<RouteSuggestion />} />
                             <Route path="/road-safety" element={<RoadSafety />} />
                             <Route path="/emergency" element={<Emergency />} />
                         </Routes>
