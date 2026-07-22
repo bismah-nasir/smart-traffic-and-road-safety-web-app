@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const PARTICLE_COUNT = 18;
@@ -13,6 +12,8 @@ const generateParticles = () =>
     duration: Math.random() * 6 + 8,
     opacity: Math.random() * 0.4 + 0.1,
   }));
+
+const particles = generateParticles();
 
 const orbs = [
   {
@@ -39,7 +40,6 @@ const orbs = [
 ];
 
 export default function AnimatedBackground() {
-  const particles = useMemo(generateParticles, []);
 
   return (
     <div
