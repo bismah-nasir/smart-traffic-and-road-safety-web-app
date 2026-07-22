@@ -9,9 +9,10 @@ import BackToTop from "@/components/BackToTop";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import EmergencyPopup from "@/components/EmergencyPopup";
 import NotificationToast from "@/components/NotificationToast";
-import ScrollToTop from '@/components/ScrollToTop';
+import ScrollToTop from "@/components/ScrollToTop";
 
 import Home from "@/pages/Home";
+import LiveTraffic from "@/pages/LiveTraffic";
 import RoadSafety from "@/pages/RoadSafety";
 import Emergency from "@/pages/Emergency";
 
@@ -45,7 +46,7 @@ export default function App() {
     }, [isLoading]);
 
     return (
-        <>  
+        <>
             <ScrollToTop />
             <LoadingScreen isLoading={isLoading} />
 
@@ -56,6 +57,7 @@ export default function App() {
                     <AnimatePresence mode="wait">
                         <Routes location={location} key={location.pathname}>
                             <Route path="/" element={<Home />} />
+                            <Route path="/live-traffic" element={<LiveTraffic />} />
                             <Route path="/road-safety" element={<RoadSafety />} />
                             <Route path="/emergency" element={<Emergency />} />
                         </Routes>

@@ -63,6 +63,37 @@ export const TRAFFIC_NEWS = [
   },
 ];
 
+// ────────── Traffic Status ──────────
+export const TRAFFIC_STATUSES = [
+  {
+    level: 'Low',
+    color: '#22c55e',
+    bgClass: 'bg-traffic-green/10',
+    borderClass: 'border-traffic-green/30',
+    percentage: 35,
+    roads: 142,
+    description: 'Smooth flow on most routes',
+  },
+  {
+    level: 'Medium',
+    color: '#eab308',
+    bgClass: 'bg-traffic-yellow/10',
+    borderClass: 'border-traffic-yellow/30',
+    percentage: 45,
+    roads: 89,
+    description: 'Moderate congestion reported',
+  },
+  {
+    level: 'High',
+    color: '#ef4444',
+    bgClass: 'bg-traffic-red/10',
+    borderClass: 'border-traffic-red/30',
+    percentage: 20,
+    roads: 34,
+    description: 'Heavy congestion — use alternate routes',
+  },
+];
+
 // ────────── Safety Tips ──────────
 export const SAFETY_TIPS = [
   {
