@@ -155,11 +155,6 @@
   box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure, blockquote, dl, dd {
-  margin: 0;
-  padding: 0;
-}
-
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -387,11 +382,6 @@ h1, h2, h3, h4, h5, h6 {
 
 *, *::before, *::after {
   box-sizing: border-box;
-}
-
-body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure, blockquote, dl, dd {
-  margin: 0;
-  padding: 0;
 }
 
 .section-label {
