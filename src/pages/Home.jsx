@@ -46,7 +46,7 @@ function AnimatedBg() {
       {/* Floating particles */}
       {[...Array(8)].map((_, i) => (
         <div key={i} className="absolute w-1 h-1 rounded-full bg-cyan/50"
-          style={{ top: `${12 + i * 11}%`, left: `${8 + i * 12}%`, animation: `particle-float ${8 + i * 1.5}s ease-in-out infinite ${i * 1.2}s` }} />
+          style={{ top: `${12 + i * 11}%`, left: `${8 + i * 12}%`, animation: `particle-float ${8 + i * 1.5}s ease-in-out infinite ${1.2}s` }} />
       ))}
     </div>
   );
