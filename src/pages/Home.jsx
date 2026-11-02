@@ -1,4 +1,4 @@
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "@/context/useTheme";
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronDown, CheckCircle, ArrowRight, Clock, Newspaper, Activity, Route, ShieldCheck, Siren } from 'lucide-react';
@@ -232,7 +232,7 @@ export default function Home() {
             </section>
 
             {/* ════════════════════ ABOUT ════════════════════ */}
-            <section id="about" className="section-padding relative">
+            <section id="about" className="section-padding relative overflow-x-clip">
                 <div className="container-custom">
                     {/* Heading */}
                     <motion.div
@@ -263,29 +263,12 @@ export default function Home() {
                                 transform urban mobility. Our system monitors
                                 over 50,000 vehicles across 200+ cities.
                             </p>
-                            <p className="text-text-secondary text-base leading-relaxed mb-8">
+                            <p className="text-text-secondary text-base leading-relaxed">
                                 From predictive congestion modeling to instant
                                 emergency dispatch, we give city planners,
                                 commuters, and first responders the tools to
                                 navigate smarter and safer.
                             </p>
-
-                            {/* Stats grid */}
-                            <div className="grid grid-cols-2 gap-4">
-                                {STATS.map((stat) => (
-                                    <div
-                                        key={stat.label}
-                                        className="glass-card p-5 text-center">
-                                        <AnimatedCounter
-                                            end={stat.value}
-                                            suffix={stat.suffix}
-                                            prefix={stat.prefix}
-                                            decimals={stat.decimals || 0}
-                                            label={stat.label}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
                         </motion.div>
 
                         {/* Right: Timeline */}
@@ -376,7 +359,7 @@ export default function Home() {
                 viewport={viewportConfig}>
                 <div className="absolute inset-0 glass" />
                 <div className="container-custom relative z-10">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-white/8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-border">
                         {STATS.map((stat) => (
                             <div key={stat.label} className="py-3 md:px-8">
                                 <AnimatedCounter

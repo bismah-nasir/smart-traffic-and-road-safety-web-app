@@ -9,7 +9,7 @@ import {
 import { SAFETY_TIPS } from '@/utils/constants';
 
 const safetyStats = [
-  { label: 'Fewer Accidents', value: 45, suffix: '%' },
+  { label: 'Fewer Fatal Injuries', value: 45, suffix: '%' },
   { label: 'Fewer Head Injuries', value: 69, suffix: '%' },
   { label: 'Lives Saved Annually', value: 12000, suffix: '+' },
   { label: 'Cities Implementing', value: 200, suffix: '+' },
@@ -31,7 +31,7 @@ export default function RoadSafety() {
             <div className="section-label" style={{ display: 'inline-flex', marginBottom: 12 }}>
               Safety Guidelines
             </div>
-            <h1 className="font-heading text-3xl md:text-4xl font-bold mb-2">
+            <h1 className="font-heading text-3xl md:text-4xl font-bold mb-2 text-text-primary">
               Road Safety <span className="text-transparent bg-clip-text bg-linear-to-r from-traffic-green to-cyan">Guidelines</span>
             </h1>
             <p className="text-text-secondary text-sm mx-auto">

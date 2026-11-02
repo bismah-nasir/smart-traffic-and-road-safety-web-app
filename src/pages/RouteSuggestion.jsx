@@ -11,7 +11,7 @@ import {
   fadeIn,
 } from '@/utils/animations';
 import { TRANSPORT_TYPES, SAMPLE_ROUTES, SAMPLE_LOCATIONS } from '@/utils/constants';
-import { useTheme } from '@/context/ThemeContext';
+import { useTheme } from '@/context/useTheme';
 
 /* ────────── Safety Score Ring ────────── */
 
@@ -131,9 +131,18 @@ function RouteMap({ selectedRouteName }) {
         <circle cx="600" cy="100" r="6" fill="#ef4444" />
         <text x="600" y="104" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold">B</text>
 
-        {/* Route labels */}
-        <text x="250" y="140" fill={expressColor} fontSize="10" fontFamily="Inter" fontWeight="600">Shahrah-e-Faisal</text>
-        <text x="430" y="260" fill={labelColor} fontSize="9" fontFamily="Inter" fontWeight="600">Lyari Expressway</text>
+        {/* Route labels (positioned along each path; active route is highlighted) */}
+        {[
+          { name: 'Via Shahrah-e-Faisal', label: 'Shahrah-e-Faisal', x: 250, y: 140 },
+          { name: 'Via Lyari Expressway', label: 'Lyari Expressway', x: 205, y: 100 },
+          { name: 'Via University Road', label: 'University Road', x: 190, y: 258 },
+        ].map((r) => (
+          <text key={r.name} x={r.x} y={r.y}
+            fill={r.name === selectedRouteName ? expressColor : labelColor}
+            fontSize={r.name === selectedRouteName ? 10 : 9} fontFamily="Inter" fontWeight="600">
+            {r.label}
+          </text>
+        ))}
       </svg>
     </div>
   );
@@ -150,9 +159,21 @@ export default function RouteSuggestion() {
   });
   const [showResults, setShowResults] = useState(false);
   const [selectedRouteName, setSelectedRouteName] = useState('Via Shahrah-e-Faisal');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const start = form.start.trim();
+    const destination = form.destination.trim();
+    if (!start || !destination) {
+      setError('Please enter both a start location and a destination.');
+      return;
+    }
+    if (start.toLowerCase() === destination.toLowerCase()) {
+      setError('Start location and destination must be different.');
+      return;
+    }
+    setError('');
     setSelectedRouteName('Via Shahrah-e-Faisal'); // Reset selection to recommended route on new search
     setShowResults(true);
   };
@@ -160,6 +181,7 @@ export default function RouteSuggestion() {
   const handleChange = (field, value) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (showResults) setShowResults(false);
+    if (error) setError('');
   };
 
   return (
@@ -214,6 +236,12 @@ export default function RouteSuggestion() {
                     </datalist>
                   </div>
                 </div>
+
+                {error && (
+                  <p role="alert" className="text-sm text-traffic-red font-medium">
+                    {error}
+                  </p>
+                )}
 
                 {/* Time */}
                 <div className="form-input-icon max-w-xs">
@@ -362,7 +390,7 @@ export default function RouteSuggestion() {
                           </div>
                           <div className="flex-1 ml-6">
                             <p className="text-xs text-text-muted mb-1 font-semibold">Traffic Density</p>
-                            <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                            <div className="w-full h-2 rounded-full bg-surface-hover overflow-hidden">
                               <motion.div
                                 className="h-full rounded-full"
                                 style={{ backgroundColor: route.trafficColor }}

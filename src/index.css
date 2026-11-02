@@ -52,7 +52,6 @@
   --animate-move-car: move-car 8s linear infinite;
   --animate-move-car-reverse: move-car-reverse 10s linear infinite;
   --animate-road-lines: road-lines 1.5s linear infinite;
-  --animate-traffic-blink: traffic-blink 3s step-end infinite;
   --animate-gradient-shift: gradient-shift 8s ease infinite;
   --animate-cloud-scroll: cloud-scroll 30s linear infinite;
   --animate-particle-float: particle-float 10s ease-in-out infinite;
@@ -92,12 +91,6 @@
   100% { background-position: -60px 0; }
 }
 
-@keyframes traffic-blink {
-  0%, 33% { --signal-color: var(--color-traffic-green); }
-  33.01%, 66% { --signal-color: var(--color-traffic-yellow); }
-  66.01%, 100% { --signal-color: var(--color-traffic-red); }
-}
-
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -133,19 +126,6 @@
 @keyframes bounce-subtle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
-}
-
-@keyframes dash-flow {
-  to { stroke-dashoffset: -20; }
-}
-
-@keyframes route-draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes marker-pulse {
-  0%, 100% { r: 6; opacity: 1; }
-  50% { r: 12; opacity: 0.4; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -400,10 +380,6 @@ body.light .gradient-border:hover {
 
 /* ── Section heading helpers ─────────────────────── */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 .section-label {
   display: inline-flex;
   align-items: center;
@@ -496,58 +472,6 @@ body.light .gradient-border:hover {
   background-size: 56px 56px;
 }
 
-/* ── Hero Road ───────────────────────────────────── */
-
-.road-surface {
-  background: linear-gradient(180deg,
-    rgba(10,10,30,0) 0%,
-    #252540 6%,
-    #303048 45%,
-    #303048 55%,
-    #252540 94%,
-    rgba(10,10,30,0) 100%
-  );
-}
-
-.road-line {
-  height: 3px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(251, 191, 36, 0.7) 0px,
-    rgba(251, 191, 36, 0.7) 24px,
-    transparent 24px,
-    transparent 48px
-  );
-  animation: road-lines 1.2s linear infinite;
-}
-
-/* ── Route Visualization ─────────────────────────── */
-
-.route-path {
-  stroke-dasharray: 10 5;
-  animation: dash-flow 1s linear infinite;
-}
-
-.route-draw {
-  animation: route-draw 2s ease-in-out forwards;
-}
-
-/* ── Pulse Rings ─────────────────────────────────── */
-
-.pulse-ring {
-  position: relative;
-}
-
-.pulse-ring::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: inherit;
-  border: 2px solid currentColor;
-  opacity: 0;
-  animation: ripple 1.5s ease-out infinite;
-}
-
 /* ── Loading screen ──────────────────────────────── */
 
 .loading-road {
@@ -603,19 +527,6 @@ body.light .gradient-border:hover {
 
 .form-input-icon .form-input {
   padding-left: 42px;
-}
-
-/* ── Stat badge ──────────────────────────────────── */
-
-.stat-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
 }
 
 /* ═══════════════════════════════════════════════════════════════

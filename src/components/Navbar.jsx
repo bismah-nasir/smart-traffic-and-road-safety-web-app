@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, Zap } from "lucide-react";
 import { staggerContainer } from "@/utils/animations";
 import { NAV_LINKS } from "@/utils/constants";
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "@/context/useTheme";
 
 /* Navbar dynamic transitions */
 const navVariants = {
@@ -72,14 +72,18 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Lock body scroll when mobile menu is open
+    // Lock body scroll and allow Escape to close when mobile menu is open
     useEffect(() => {
-        if (mobileOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
+        if (!mobileOpen) return;
+
+        document.body.style.overflow = "hidden";
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") setMobileOpen(false);
+        };
+        window.addEventListener("keydown", handleKeyDown);
+
         return () => {
+            window.removeEventListener("keydown", handleKeyDown);
             document.body.style.overflow = "";
         };
     }, [mobileOpen]);
