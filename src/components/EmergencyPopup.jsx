@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Siren, PhoneCall } from 'lucide-react';
 import { EMERGENCY_CONTACTS } from '@/utils/constants';
@@ -26,6 +27,34 @@ const modalVariants = {
 };
 
 export default function EmergencyPopup({ isOpen, onClose }) {
+  const closeButtonRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  // Close on Escape, lock background scroll, and move focus into the dialog
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previouslyFocused = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onCloseRef.current?.();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus?.();
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -69,6 +98,7 @@ export default function EmergencyPopup({ isOpen, onClose }) {
               </div>
 
               <motion.button
+                ref={closeButtonRef}
                 onClick={onClose}
                 className="absolute top-5 right-5 p-1.5 rounded-lg hover:bg-surface-hover transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}

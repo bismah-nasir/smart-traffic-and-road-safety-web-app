@@ -16,6 +16,7 @@ import LiveTraffic from "@/pages/LiveTraffic";
 import RouteSuggestion from '@/pages/RouteSuggestion';
 import RoadSafety from "@/pages/RoadSafety";
 import Emergency from "@/pages/Emergency";
+import NotFound from "@/pages/NotFound";
 
 export default function App() {
     const location = useLocation();
@@ -60,7 +61,15 @@ export default function App() {
                             <Route path="/live-traffic" element={<LiveTraffic />} />
                             <Route path="/route-suggestion" element={<RouteSuggestion />} />
                             <Route path="/road-safety" element={<RoadSafety />} />
-                            <Route path="/emergency" element={<Emergency />} />
+                            <Route
+                                path="/emergency"
+                                element={
+                                    <Emergency
+                                        onSosClick={() => setShowEmergencyPopup(true)}
+                                    />
+                                }
+                            />
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </AnimatePresence>
 

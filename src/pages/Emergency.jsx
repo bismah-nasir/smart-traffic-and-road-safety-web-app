@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Siren, Phone, AlertTriangle, Clock, MapPin } from 'lucide-react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import GlassCard from '@/components/GlassCard';
-import EmergencyPopup from '@/components/EmergencyPopup';
 import {
   pageTransition, staggerContainer, staggerItem, fadeIn, viewportConfig,
 } from '@/utils/animations';
@@ -27,9 +25,7 @@ const emergencyTips = [
   },
 ];
 
-export default function Emergency() {
-  const [popupOpen, setPopupOpen] = useState(false);
-
+export default function Emergency({ onSosClick }) {
   return (
     <motion.div {...pageTransition}>
       <AnimatedBackground />
@@ -61,7 +57,7 @@ export default function Emergency() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.button
-              onClick={() => setPopupOpen(true)}
+              onClick={onSosClick}
               className="relative w-32 h-32 rounded-full bg-linear-to-br from-red-500 to-rose-600 flex items-center justify-center text-white font-heading text-3xl font-bold cursor-pointer border-none shadow-2xl"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
@@ -160,9 +156,6 @@ export default function Emergency() {
 
         </div>
       </div>
-
-      {/* ── Emergency Popup ─────────────────── */}
-      <EmergencyPopup isOpen={popupOpen} onClose={() => setPopupOpen(false)} />
     </motion.div>
   );
 }

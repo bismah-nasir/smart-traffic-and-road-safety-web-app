@@ -8,7 +8,7 @@ import WeatherWidget from '@/components/WeatherWidget';
 import { pageTransition, staggerContainer, staggerItem, slideUp, fadeIn, viewportConfig } from '@/utils/animations';
 import { TRAFFIC_STATUSES } from '@/utils/constants';
 
-import { useTheme } from '@/context/ThemeContext';
+import { useTheme } from '@/context/useTheme';
 
 /* ────────── Animated Vector Map SVG ────────── */
 function TrafficMap() {
@@ -279,7 +279,7 @@ export default function LiveTraffic() {
                     </span>
                   </div>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed">{status.description}</p>
-                  <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div className="w-full h-1.5 rounded-full bg-surface-hover overflow-hidden">
                     <motion.div
                       className="h-full rounded-full"
                       style={{ backgroundColor: status.color }}

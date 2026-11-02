@@ -23,7 +23,7 @@ const WeatherWidget = () => {
           </p>
         </div>
 
-        <div className="w-px h-6 bg-white/10" />
+        <div className="w-px h-6 bg-border" />
 
         <div className="flex items-center gap-1">
           <Droplets className="w-3 h-3 text-electric" />

@@ -17,13 +17,12 @@ export default function AnimatedCounter({
   const targetValue = end ?? value ?? 0;
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const hasAnimated = useRef(false);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
-    if (!isInView || hasAnimated.current) return;
-    hasAnimated.current = true;
+    if (!isInView) return;
 
+    let frameId;
     const startTime = performance.now();
     const durationMs = duration * 1000;
 
@@ -34,13 +33,14 @@ export default function AnimatedCounter({
       setCount(eased * targetValue);
 
       if (progress < 1) {
-        requestAnimationFrame(tick);
+        frameId = requestAnimationFrame(tick);
       } else {
         setCount(targetValue);
       }
     }
 
-    requestAnimationFrame(tick);
+    frameId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameId);
   }, [isInView, targetValue, duration]);
 
   const formatted = decimals > 0

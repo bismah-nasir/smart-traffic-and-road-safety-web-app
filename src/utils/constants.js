@@ -1,7 +1,4 @@
 import {
-    Activity,
-    Route,
-    ShieldCheck,
     Siren,
     Car,
     Bike,
@@ -17,7 +14,6 @@ import {
     Ambulance,
     Shield,
     Flame,
-    Phone,
     Hospital,
 } from "lucide-react";
 
@@ -30,45 +26,6 @@ export const NAV_LINKS = [
     { label: "Emergency", path: "/emergency" },
 ];
 
-// ────────── Features ──────────
-export const FEATURES = [
-    {
-        id: "traffic-monitoring",
-        title: "Traffic Monitoring",
-        description:
-            "Real-time traffic analysis powered by AI with smart sensors across 200+ city intersections.",
-        icon: Activity,
-        gradient: "from-cyan-400 to-blue-500",
-        color: "#06b6d4",
-    },
-    {
-        id: "smart-route",
-        title: "Smart Route Suggestion",
-        description:
-            "AI-optimized routing that saves an average of 23 minutes per commute using live data.",
-        icon: Route,
-        gradient: "from-purple-400 to-indigo-500",
-        color: "#8b5cf6",
-    },
-    {
-        id: "road-safety",
-        title: "Road Safety",
-        description:
-            "Comprehensive safety guidelines and real-time hazard alerts to protect every road user.",
-        icon: ShieldCheck,
-        gradient: "from-green-400 to-emerald-500",
-        color: "#22c55e",
-    },
-    {
-        id: "emergency",
-        title: "Emergency Assistance",
-        description:
-            "One-tap emergency response with sub-3-minute average dispatch time in covered areas.",
-        icon: Siren,
-        gradient: "from-red-400 to-rose-500",
-        color: "#ef4444",
-    },
-];
 // ────────── Stats ──────────
 export const STATS = [
     { label: "Vehicles Monitored", value: 50000, suffix: "+", prefix: "" },
@@ -140,8 +97,6 @@ export const TRAFFIC_STATUSES = [
     {
         level: "Low",
         color: "#22c55e",
-        bgClass: "bg-traffic-green/10",
-        borderClass: "border-traffic-green/30",
         percentage: 35,
         roads: 142,
         description: "Smooth flow on most routes",
@@ -149,8 +104,6 @@ export const TRAFFIC_STATUSES = [
     {
         level: "Medium",
         color: "#eab308",
-        bgClass: "bg-traffic-yellow/10",
-        borderClass: "border-traffic-yellow/30",
         percentage: 45,
         roads: 89,
         description: "Moderate congestion reported",
@@ -158,8 +111,6 @@ export const TRAFFIC_STATUSES = [
     {
         level: "High",
         color: "#ef4444",
-        bgClass: "bg-traffic-red/10",
-        borderClass: "border-traffic-red/30",
         percentage: 20,
         roads: 34,
         description: "Heavy congestion — use alternate routes",
@@ -287,13 +238,13 @@ export const SAFETY_TIPS = [
     },
 ];
 
-// ────────── Emergency Contacts ──────────
+// ────────── Emergency Contacts (Pakistan) ──────────
 export const EMERGENCY_CONTACTS = [
     {
-        id: "ambulance",
-        title: "Ambulance",
-        number: "102",
-        description: "Medical emergency response",
+        id: "rescue",
+        title: "Rescue & Ambulance",
+        number: "1122",
+        description: "Medical emergency & rescue services",
         icon: Ambulance,
         color: "#ef4444",
         gradient: "from-red-500 to-rose-600",
@@ -301,8 +252,8 @@ export const EMERGENCY_CONTACTS = [
     {
         id: "police",
         title: "Police",
-        number: "100",
-        description: "Law enforcement & traffic police",
+        number: "15",
+        description: "Police emergency helpline",
         icon: Shield,
         color: "#3b82f6",
         gradient: "from-blue-500 to-indigo-600",
@@ -310,27 +261,27 @@ export const EMERGENCY_CONTACTS = [
     {
         id: "fire",
         title: "Fire Brigade",
-        number: "101",
+        number: "16",
         description: "Fire & rescue services",
         icon: Flame,
         color: "#f97316",
         gradient: "from-orange-500 to-amber-600",
     },
     {
-        id: "helpline",
-        title: "Emergency Helpline",
-        number: "112",
-        description: "Universal emergency number",
-        icon: Phone,
+        id: "edhi",
+        title: "Edhi Ambulance",
+        number: "115",
+        description: "Edhi Foundation ambulance service",
+        icon: Hospital,
         color: "#22c55e",
         gradient: "from-green-500 to-emerald-600",
     },
     {
-        id: "hospital",
-        title: "Nearby Hospital",
-        number: "108",
-        description: "Nearest hospital finder",
-        icon: Hospital,
+        id: "motorway-police",
+        title: "Motorway Police",
+        number: "130",
+        description: "National Highways & Motorway Police",
+        icon: Siren,
         color: "#8b5cf6",
         gradient: "from-purple-500 to-violet-600",
     },

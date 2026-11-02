@@ -43,7 +43,10 @@ const NotificationToast = ({ message, type = 'info', isVisible, onClose }) => {
   const config = typeConfig[type] || typeConfig.info;
   const Icon = config.icon;
   const onCloseRef = useRef(onClose);
-  onCloseRef.current = onClose;
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -65,7 +68,7 @@ const NotificationToast = ({ message, type = 'info', isVisible, onClose }) => {
           exit="exit"
           role="alert"
           aria-live="assertive"
-          className={`fixed top-24 right-8 z-50 glass-strong rounded-xl border-l-4 ${config.borderColor} ${config.glowClass} px-5 py-4 flex items-start gap-3 min-w-75 max-w-105 shadow-2xl`}
+          className={`fixed top-24 left-4 right-4 sm:left-auto sm:right-8 z-50 glass-strong rounded-xl border-l-4 ${config.borderColor} ${config.glowClass} px-5 py-4 flex items-start gap-3 sm:min-w-75 sm:max-w-105 shadow-2xl`}
         >
           <Icon className={`w-5 h-5 mt-0.5 shrink-0 ${config.iconColor}`} />
 
@@ -75,7 +78,7 @@ const NotificationToast = ({ message, type = 'info', isVisible, onClose }) => {
 
           <button
             onClick={onClose}
-            className="shrink-0 p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+            className="shrink-0 p-1 rounded-lg hover:bg-surface-hover transition-colors cursor-pointer"
             aria-label="Dismiss notification"
           >
             <X className="w-4 h-4 text-text-muted hover:text-text-primary transition-colors" />
