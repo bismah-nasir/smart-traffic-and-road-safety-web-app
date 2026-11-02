@@ -1,0 +1,26 @@
+{
+    "name": "smarttraffic-demo-video",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Remotion demo video and poster for SmartTraffic",
+    "scripts": {
+        "studio": "remotion studio",
+        "record": "node scripts/record-clips.mjs",
+        "music": "node scripts/make-music.mjs",
+        "render": "remotion render SmartTrafficDemo out/smarttraffic-demo.mp4",
+        "poster": "remotion still SmartTrafficPoster out/poster.jpg --image-format=jpeg"
+    },
+    "dependencies": {
+        "@remotion/cli": "4.0.539",
+        "@remotion/google-fonts": "4.0.539",
+        "react": "19.3.0",
+        "react-dom": "19.3.0",
+        "remotion": "4.0.539"
+    },
+    "devDependencies": {
+        "playwright-core": "^1.64.1"
+    },
+    "allowScripts": {
+        "esbuild@0.28.1": true
+    }
+}
